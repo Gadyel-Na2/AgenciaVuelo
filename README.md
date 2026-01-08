@@ -19,10 +19,8 @@ Arquitectura modular con separación de responsabilidades
 Visualización Web:
 Interfaz responsive (móvil y escritorio)
 Sistema de filtros dinámicos (origen, destino, fecha)
-Estadísticas en tiempo real
-Diseño moderno con gradientes y animaciones
+Estadísticas en tiempo real(editando hoja de cálculo)
 Actualización automática de datos cada 60 segundos
-Tecnologías Utilizadas
 
 Backend:
 C++ (Standard Library)
@@ -31,7 +29,7 @@ Gestión de memoria con arreglos estáticos
 
 Frontend:
 HTML5 - Estructura semántica
-CSS3 - Diseño responsive, Flexbox, Grid
+CSS3 - Diseño responsive, Grid
 JavaScript ES6+ - Fetch API, async/await
 Google Sheets API - Base de datos en la nube
 
