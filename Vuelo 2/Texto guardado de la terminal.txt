@@ -1,0 +1,279 @@
+Last login: Tue Dec  2 08:25:04 on ttys013
+(base) ➜  ~ pwd     
+/Users/aldopazmendiola
+(base) ➜  ~ cd ../aldopazmendiola/Tecnologico\ de\ Monterrey/Primer_Semestre_Tec/Vuelo/
+(base) ➜  Vuelo ./viajandoando 
+Iniciando Sistema de Gestion de Agencia de Vuelos...
+====================================================
+
+Sistema inicializado con 4 clientes y 6 vuelos disponibles.
+
+========================================
+    SISTEMA DE GESTION DE VUELOS
+========================================
+1. Agregar Cliente
+2. Mostrar Todos los Vuelos
+3. Realizar Reservacion
+4. Mostrar Todas las Reservaciones
+5. Buscar Vuelo por Criterios
+6. Reimprimir Boleto
+7. Salir
+========================================
+Seleccione una opcion: 1
+
+=== AGREGAR NUEVO CLIENTE ===
+Ingrese ID del cliente: 123
+Ingrese nombre completo: Francisco
+Ingrese email: fbueno@gmail.com
+Ingrese kilometros acumulados: 48000
+
+Cliente agregado exitosamente!
+
+=== INFORMACION DEL CLIENTE ===
+ID: 123
+Nombre: Francisco
+Email: fbueno@gmail.com
+Kilometros Acumulados: 48000 km
+================================
+
+
+========================================
+    SISTEMA DE GESTION DE VUELOS
+========================================
+1. Agregar Cliente
+2. Mostrar Todos los Vuelos
+3. Realizar Reservacion
+4. Mostrar Todas las Reservaciones
+5. Buscar Vuelo por Criterios
+6. Reimprimir Boleto
+7. Salir
+========================================
+Seleccione una opcion: 4
+
+======================================
+    TODAS LAS RESERVACIONES
+======================================
+No hay reservaciones registradas.
+
+========================================
+    SISTEMA DE GESTION DE VUELOS
+========================================
+1. Agregar Cliente
+2. Mostrar Todos los Vuelos
+3. Realizar Reservacion
+4. Mostrar Todas las Reservaciones
+5. Buscar Vuelo por Criterios
+6. Reimprimir Boleto
+7. Salir
+========================================
+Seleccione una opcion: 3
+
+=== REALIZAR RESERVACION ===
+Ingrese su ID de cliente: 123
+
+Bienvenido, Francisco!
+
+======================================
+    VUELOS DISPONIBLES
+======================================
+
+--- Vuelo #101 ---
+Origen: Ciudad de Mexico -> Destino: Nueva York
+Fecha: 2025-12-15
+Duracion: 5 horas
+Precio: $8500
+Distancia: 3360 km
+Asientos disponibles: 50
+------------------------
+
+
+--- Vuelo #102 ---
+Origen: Guadalajara -> Destino: Los Angeles
+Fecha: 2025-12-16
+Duracion: 4 horas
+Precio: $6200
+Distancia: 2450 km
+Asientos disponibles: 30
+------------------------
+
+
+--- Vuelo #103 ---
+Origen: Monterrey -> Destino: Miami
+Fecha: 2025-12-17
+Duracion: 3 horas
+Precio: $7800
+Distancia: 2890 km
+Asientos disponibles: 40
+------------------------
+
+
+--- Vuelo #104 ---
+Origen: Cancun -> Destino: Madrid
+Fecha: 2025-12-18
+Duracion: 10 horas
+Precio: $15000
+Distancia: 8200 km
+Asientos disponibles: 25
+------------------------
+
+
+--- Vuelo #105 ---
+Origen: Ciudad de Mexico -> Destino: Tokyo
+Fecha: 2025-12-20
+Duracion: 14 horas
+Precio: $22000
+Distancia: 11300 km
+Asientos disponibles: 20
+------------------------
+
+
+--- Vuelo #106 ---
+Origen: Tijuana -> Destino: San Francisco
+Fecha: 2025-12-21
+Duracion: 3 horas
+Precio: $5500
+Distancia: 1200 km
+Asientos disponibles: 35
+------------------------
+
+
+Ingrese el numero de vuelo que desea reservar: 105
+
+Precio del vuelo: $22000
+
+Desea confirmar la reservacion? (s/n): s
+Asiento reservado exitosamente. Asientos restantes: 19
+Se han acumulado 11300 kilometros. Total: 59300 km
+
+*** RESERVACION EXITOSA ***
+
+=== RESERVACION #1 ===
+ID Cliente: 123
+Numero de Vuelo: 105
+Destino: Tokyo
+Precio Final: $22000
+================================
+
+Desea imprimir su boleto? (s/n): s
+
+*** BOLETO GENERADO EXITOSAMENTE ***
+El boleto se ha guardado en: /Users/aldopazmendiola/Downloads/boleto_1.txt
+
+========================================
+    SISTEMA DE GESTION DE VUELOS
+========================================
+1. Agregar Cliente
+2. Mostrar Todos los Vuelos
+3. Realizar Reservacion
+4. Mostrar Todas las Reservaciones
+5. Buscar Vuelo por Criterios
+6. Reimprimir Boleto
+7. Salir
+========================================
+Seleccione una opcion: 4
+
+======================================
+    TODAS LAS RESERVACIONES
+======================================
+
+=== RESERVACION #1 ===
+ID Cliente: 123
+Numero de Vuelo: 105
+Destino: Tokyo
+Precio Final: $22000
+================================
+
+Nombre del cliente: Francisco
+Origen: Ciudad de Mexico -> Destino: Tokyo
+Fecha: 2025-12-20
+-----------------------------------
+
+========================================
+    SISTEMA DE GESTION DE VUELOS
+========================================
+1. Agregar Cliente
+2. Mostrar Todos los Vuelos
+3. Realizar Reservacion
+4. Mostrar Todas las Reservaciones
+5. Buscar Vuelo por Criterios
+6. Reimprimir Boleto
+7. Salir
+========================================
+Seleccione una opcion: 2       
+
+======================================
+    VUELOS DISPONIBLES
+======================================
+
+--- Vuelo #101 ---
+Origen: Ciudad de Mexico -> Destino: Nueva York
+Fecha: 2025-12-15
+Duracion: 5 horas
+Precio: $8500
+Distancia: 3360 km
+Asientos disponibles: 50
+------------------------
+
+
+--- Vuelo #102 ---
+Origen: Guadalajara -> Destino: Los Angeles
+Fecha: 2025-12-16
+Duracion: 4 horas
+Precio: $6200
+Distancia: 2450 km
+Asientos disponibles: 30
+------------------------
+
+
+--- Vuelo #103 ---
+Origen: Monterrey -> Destino: Miami
+Fecha: 2025-12-17
+Duracion: 3 horas
+Precio: $7800
+Distancia: 2890 km
+Asientos disponibles: 40
+------------------------
+
+
+--- Vuelo #104 ---
+Origen: Cancun -> Destino: Madrid
+Fecha: 2025-12-18
+Duracion: 10 horas
+Precio: $15000
+Distancia: 8200 km
+Asientos disponibles: 25
+------------------------
+
+
+--- Vuelo #105 ---
+Origen: Ciudad de Mexico -> Destino: Tokyo
+Fecha: 2025-12-20
+Duracion: 14 horas
+Precio: $22000
+Distancia: 11300 km
+Asientos disponibles: 19
+------------------------
+
+
+--- Vuelo #106 ---
+Origen: Tijuana -> Destino: San Francisco
+Fecha: 2025-12-21
+Duracion: 3 horas
+Precio: $5500
+Distancia: 1200 km
+Asientos disponibles: 35
+------------------------
+
+
+========================================
+    SISTEMA DE GESTION DE VUELOS
+========================================
+1. Agregar Cliente
+2. Mostrar Todos los Vuelos
+3. Realizar Reservacion
+4. Mostrar Todas las Reservaciones
+5. Buscar Vuelo por Criterios
+6. Reimprimir Boleto
+7. Salir
+========================================
+Seleccione una opcion: 

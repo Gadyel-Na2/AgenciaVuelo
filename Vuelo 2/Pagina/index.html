@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vuelos ViajandoAndo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 2.5em;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 30px;
+      font-size: 1.1em;
+    }
+    
+    .filtros {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    
+    .filtros input, .filtros select {
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1em;
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .filtros button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    
+    .btn-buscar {
+      background: #667eea;
+      color: white;
+    }
+    
+    .btn-buscar:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+    }
+    
+    .btn-limpiar {
+      background: #e0e0e0;
+      color: #2c3e50;
+    }
+    
+    .btn-limpiar:hover {
+      background: #d0d0d0;
+    }
+    
+    .vuelo-card {
+      border: 2px solid #e0e0e0;
+      border-radius: 15px;
+      padding: 25px;
+      margin: 15px 0;
+      background: linear-gradient(to right, #f8f9fa, #ffffff);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .vuelo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-color: #667eea;
+    }
+    
+    .vuelo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .vuelo-numero {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #667eea;
+    }
+    
+    .vuelo-precio {
+      font-size: 1.8em;
+      color: #27ae60;
+      font-weight: bold;
+    }
+    
+    .ruta {
+      font-size: 1.3em;
+      color: #2c3e50;
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .flecha {
+      color: #667eea;
+      font-weight: bold;
+    }
+    
+    .detalles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px solid #e0e0e0;
+    }
+    
+    .detalle-item {
+      text-align: center;
+    }
+    
+    .detalle-label {
+      font-size: 0.9em;
+      color: #7f8c8d;
+      margin-bottom: 5px;
+    }
+    
+    .detalle-valor {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    
+    .loading {
+      text-align: center;
+      font-size: 1.5em;
+      color: #667eea;
+      padding: 50px;
+    }
+    
+    .asientos-badge {
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+    
+    .asientos-disponibles {
+      background: #d4edda;
+      color: #155724;
+    }
+    
+    .asientos-limitados {
+      background: #fff3cd;
+      color: #856404;
+    }
+    
+    .asientos-pocos {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8em;
+      }
+      
+      .filtros {
+        flex-direction: column;
+      }
+      
+      .filtros input, .filtros button {
+        width: 100%;
+      }
+      
+      .ruta {
+        flex-direction: column;
+        gap: 5px;
+      }
+      
+      .vuelo-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✈️ Vuelos Disponibles</h1>
+    <p class="subtitle">ViajandoAndo - Tu mejor opción para viajar</p>
+    
+    <div class="stats" id="stats" style="display: none;">
+      <div class="stat-card">
+        <div class="stat-number" id="totalVuelos">0</div>
+        <div class="stat-label">Vuelos Disponibles</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="totalAsientos">0</div>
+        <div class="stat-label">Asientos Totales</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="precioPromedio">$0</div>
+        <div class="stat-label">Precio Promedio</div>
+      </div>
+    </div>
+    
+    <div class="filtros">
+      <input type="text" id="filtroOrigen" placeholder="🛫 Filtrar por origen (ej: Ciudad de Mexico)">
+      <input type="text" id="filtroDestino" placeholder="🛬 Filtrar por destino (ej: Nueva York)">
+      <input type="date" id="filtroFecha">
+      <button class="btn-buscar" onclick="aplicarFiltros()">🔍 Buscar</button>
+      <button class="btn-limpiar" onclick="limpiarFiltros()">🔄 Limpiar</button>
+    </div>
+
+    <div id="vuelos-container">
+      <div class="loading">⏳ Cargando vuelos desde Google Sheets...</div>
+    </div>
+  </div>
+
+  <script>
+    // 🔥 REEMPLAZA ESTE URL CON TU LINK CSV DE GOOGLE SHEETS
+    const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTW-i4clNRzSflmpZJDp5oAB6C5Fmn9k0wuqDYr2GsIayZAVgx9tHjgD0sLvyfD-MI7CgqElLBVQ2wL/pub?output=csv';
+    let todosLosVuelos = [];
+
+    async function cargarVuelos() {
+      try {
+        const response = await fetch(SHEET_URL);
+        const csvText = await response.text();
+        
+        // Parsear CSV
+        const lineas = csvText.split('\n');
+        const vuelos = [];
+        
+        // Saltar la primera línea (encabezados)
+        for (let i = 1; i < lineas.length; i++) {
+          if (lineas[i].trim() === '') continue;
+          
+          const datos = lineas[i].split(',');
+          
+          if (datos.length >= 8) {
+            vuelos.push({
+              numero: datos[0]?.trim(),
+              origen: datos[1]?.trim(),
+              destino: datos[2]?.trim(),
+              fecha: datos[3]?.trim(),
+              duracion: datos[4]?.trim(),
+              precio: parseFloat(datos[5]),
+              asientos: parseInt(datos[6]),
+              distancia: parseFloat(datos[7])
+            });
+          }
+        }
+        
+        todosLosVuelos = vuelos;
+        mostrarVuelos(vuelos);
+        actualizarEstadisticas(vuelos);
+        
+      } catch (error) {
+        console.error('Error al cargar vuelos:', error);
+        document.getElementById('vuelos-container').innerHTML = 
+          '<div class="loading" style="color: #e74c3c;">❌ Error al cargar vuelos. Verifica que el link de Google Sheets sea correcto y esté publicado como CSV.</div>';
+      }
+    }
+
+    function actualizarEstadisticas(vuelos) {
+      document.getElementById('stats').style.display = 'grid';
+      document.getElementById('totalVuelos').textContent = vuelos.length;
+      
+      const totalAsientos = vuelos.reduce((sum, v) => sum + v.asientos, 0);
+      document.getElementById('totalAsientos').textContent = totalAsientos;
+      
+      const precioPromedio = vuelos.reduce((sum, v) => sum + v.precio, 0) / vuelos.length;
+      document.getElementById('precioPromedio').textContent = 
+        '$' + Math.round(precioPromedio).toLocaleString('es-MX');
+    }
+
+    function mostrarVuelos(vuelos) {
+      const container = document.getElementById('vuelos-container');
+      
+      if (vuelos.length === 0) {
+        container.innerHTML = '<div class="loading">😕 No se encontraron vuelos con esos criterios</div>';
+        return;
+      }
+      
+      container.innerHTML = vuelos.map(v => {
+        let asientosClase = 'asientos-disponibles';
+        if (v.asientos < 30) asientosClase = 'asientos-limitados';
+        if (v.asientos < 15) asientosClase = 'asientos-pocos';
+        
+        return `
+          <div class="vuelo-card">
+            <div class="vuelo-header">
+              <div class="vuelo-numero">✈️ Vuelo ${v.numero}</div>
+              <div class="vuelo-precio">$${v.precio.toLocaleString('es-MX')}</div>
+            </div>
+            
+            <div class="ruta">
+              <span>🛫 ${v.origen}</span>
+              <span class="flecha">→</span>
+              <span>🛬 ${v.destino}</span>
+            </div>
+            
+            <div class="detalles">
+              <div class="detalle-item">
+                <div class="detalle-label">📅 Fecha</div>
+                <div class="detalle-valor">${formatearFecha(v.fecha)}</div>
+              </div>
+              
+              <div class="detalle-item">
+                <div class="detalle-label">⏱️ Duración</div>
+                <div class="detalle-valor">${v.duracion} horas</div>
+              </div>
+              
+              <div class="detalle-item">
+                <div class="detalle-label">📏 Distancia</div>
+                <div class="detalle-valor">${v.distancia.toLocaleString()} km</div>
+              </div>
+              
+              <div class="detalle-item">
+                <div class="detalle-label">💺 Disponibilidad</div>
+                <div class="detalle-valor">
+                  <span class="asientos-badge ${asientosClase}">
+                    ${v.asientos} asientos
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function formatearFecha(fecha) {
+      const date = new Date(fecha + 'T00:00:00');
+      return date.toLocaleDateString('es-MX', { 
+        weekday: 'long',
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+    }
+
+    function aplicarFiltros() {
+      const origen = document.getElementById('filtroOrigen').value.toLowerCase();
+      const destino = document.getElementById('filtroDestino').value.toLowerCase();
+      const fecha = document.getElementById('filtroFecha').value;
+      
+      let vuelosFiltrados = todosLosVuelos;
+      
+      if (origen) {
+        vuelosFiltrados = vuelosFiltrados.filter(v => 
+          v.origen.toLowerCase().includes(origen)
+        );
+      }
+      
+      if (destino) {
+        vuelosFiltrados = vuelosFiltrados.filter(v => 
+          v.destino.toLowerCase().includes(destino)
+        );
+      }
+      
+      if (fecha) {
+        vuelosFiltrados = vuelosFiltrados.filter(v => 
+          v.fecha === fecha
+        );
+      }
+      
+      mostrarVuelos(vuelosFiltrados);
+      actualizarEstadisticas(vuelosFiltrados);
+    }
+
+    function limpiarFiltros() {
+      document.getElementById('filtroOrigen').value = '';
+      document.getElementById('filtroDestino').value = '';
+      document.getElementById('filtroFecha').value = '';
+      mostrarVuelos(todosLosVuelos);
+      actualizarEstadisticas(todosLosVuelos);
+    }
+
+    // Cargar vuelos al iniciar
+    cargarVuelos();
+    
+    // Recargar cada 60 segundos para obtener datos actualizados
+    setInterval(cargarVuelos, 60000);
+  </script>
+</body>
+</html>
